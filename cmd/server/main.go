@@ -2,7 +2,7 @@
 package main
 
 import (
-	"gokanban/internal/route"
+	handler "gokanban/internal/handlers"
 	"net/http"
 )
 
@@ -14,9 +14,8 @@ func main() {
 }
 
 func setupRoutes() {
-	http.HandleFunc("/", route.HomeHandler) // Serve HTMX front-end
-	http.HandleFunc("/login", route.LoginHandler)
-	http.HandleFunc("/register", route.RegisterHandler)
-	http.HandleFunc("/dashboard", route.DashboardHandler) // Make sure this is protected
-	// Add other necessary routes
+	http.HandleFunc("/", handler.HomeHandler)
+	http.HandleFunc("/login", handler.LoginHandler)
+	http.HandleFunc("/register", handler.RegisterHandler)
+	http.HandleFunc("/dashboard", handler.DashboardHandler)
 }
