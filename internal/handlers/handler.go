@@ -4,6 +4,11 @@ import "net/http"
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	// Serve the HTMX index page
+	// return json
+	jsonData := `{"message": "Hello, World!"}`
+	w.Header().Set("Content-Type", "application/json")
+	w.Write([]byte(jsonData))
+
 }
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
