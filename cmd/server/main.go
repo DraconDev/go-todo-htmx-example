@@ -2,19 +2,15 @@
 package main
 
 import (
-	"fmt"
-	"gokanban/route"
-	"log"
+	"gokanban/internal/route"
 	"net/http"
 )
 
 func main() {
-	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
+	setupRoutes()
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello, World!")
+	http.ListenAndServe(":8080", nil)
+
 }
 
 func setupRoutes() {
