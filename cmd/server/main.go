@@ -14,7 +14,8 @@ import (
 func main() {
 	r := gin.Default()
 	setupRoutes(r)
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob("templates/partial/*")
+	r.LoadHTMLGlob("templates/base/*")
 	r.Static("/styles", "./styles")
 
 	godotenv.Load(".env")
