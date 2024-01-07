@@ -19,6 +19,11 @@ func main() {
 
 	myDB.GetVersion()
 	// myDB.AddCard("test card", []string{"tag1", "tag2"})
+	cards, err := myDB.GetAllCards()
+	if err != nil {
+		panic(err)
+	}
+	print(cards)
 
 	http.ListenAndServe(":8080", nil)
 
