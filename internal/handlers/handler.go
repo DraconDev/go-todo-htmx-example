@@ -1,24 +1,45 @@
 package handler
 
-import "net/http"
+import (
+	"net/http"
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	"github.com/gin-gonic/gin"
+)
+
+func HomeHandler(c *gin.Context) {
 	// Serve the HTMX index page
 	// return json
-	jsonData := `{"message": "Hello, World!"}`
-	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(jsonData))
+	jsonData := map[string]string{"message": "Hello, World!"}
+	c.JSON(http.StatusOK, jsonData)
 
 }
 
-func LoginHandler(w http.ResponseWriter, r *http.Request) {
+func Index(c *gin.Context) {
+
+	c.HTML(200, "index.html", gin.H{
+		"title": "Home Page",
+	})
+}
+
+func CardsHandler(c *gin.Context) {
+	// Serve the HTMX cards page
+	// return index html
+	// return json
+
+	c.HTML(200, "index.html", gin.H{
+		"title": "Home Page",
+	})
+
+}
+
+func LoginHandler(c *gin.Context) {
 	// Handle user login
 }
 
-func RegisterHandler(w http.ResponseWriter, r *http.Request) {
+func RegisterHandler(c *gin.Context) {
 	// Handle new user registration
 }
 
-func DashboardHandler(w http.ResponseWriter, r *http.Request) {
+func DashboardHandler(c *gin.Context) {
 	// Serve the dashboard only if the user is authenticated
 }

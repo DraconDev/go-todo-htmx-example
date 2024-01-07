@@ -2,9 +2,9 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 
 	"gokanban/internal/db"
@@ -12,30 +12,36 @@ import (
 )
 
 func main() {
+	r := gin.Default()
+	setupRoutes(r)
+	r.LoadHTMLGlob("templates/*")
+	r.Static("/styles", "./styles")
+
 	godotenv.Load(".env")
 	connStr := os.Getenv("NEON_LINK")
+
 	myDB, err := db.NewDatabase(connStr)
 	if err != nil {
 		panic(err)
 	}
-
-	setupRoutes()
-
 	myDB.GetVersion()
 	// myDB.AddCard("test card", []string{"tag1", "tag2"})
-	cards, err := myDB.GetAllCards()
-	if err != nil {
-		panic(err)
-	}
-	print(cards)
+	// cards, err := myDB.GetAllCards()
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// print(cards)
 
-	http.ListenAndServe(":8080", nil)
+	r.Run(":8080")
 
 }
 
-func setupRoutes() {
-	http.HandleFunc("/", handler.HomeHandler)
-	http.HandleFunc("/login", handler.LoginHandler)
-	http.HandleFunc("/register", handler.RegisterHandler)
-	http.HandleFunc("/dashboard", handler.DashboardHandler)
+func setupRoutes(r *gin.Engine) {
+
+	r.GET("/", handler.Index)
+	r.GET("/hello", handler.HomeHandler)
+	r.GET("/cards", handler.CardsHandler)
+	r.GET("/login", handler.LoginHandler)
+	r.GET("/register", handler.RegisterHandler)
+	r.GET("/dashboard", handler.DashboardHandler)
 }
