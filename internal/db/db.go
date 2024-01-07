@@ -60,7 +60,7 @@ func (db *Database) AddCard(text string, tags []string) error {
 	}
 
 	// Prepare the SQL query to insert text and tags
-	query := "INSERT INTO kanban (text, tags) VALUES ($1, $2)"
+	query := "INSERT INTO kanban (name, tags) VALUES ($1, $2)"
 	_, err = db.Exec(query, text, tagsJSON)
 	if err != nil {
 		return err
