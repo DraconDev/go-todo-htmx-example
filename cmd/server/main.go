@@ -18,6 +18,7 @@ func main() {
 	setupRoutes()
 
 	myDB.GetVersion()
+	// myDB.AddCard("test card", []string{"tag1", "tag2"})
 
 	http.ListenAndServe(":8080", nil)
 
