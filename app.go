@@ -14,9 +14,10 @@ import (
 func main() {
 	r := gin.Default()
 	setupRoutes(r)
-	r.LoadHTMLGlob("templates/partials/*")
-	r.LoadHTMLGlob("templates/index.html")
 	r.Static("/styles", "./styles")
+	r.LoadHTMLGlob("templates/*")
+	// r.LoadHTMLFiles("templates/index.html")
+	// r.LoadHTMLGlob("templates/partials/*")
 
 	godotenv.Load(".env")
 	connStr := os.Getenv("NEON_LINK")
