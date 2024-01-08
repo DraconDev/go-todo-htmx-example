@@ -16,7 +16,7 @@ func HomeHandler(c *gin.Context) {
 
 func Index(c *gin.Context) {
 
-	c.HTML(200, "index.tmpl", gin.H{
+	c.HTML(200, "index.html", gin.H{
 		"title": "Home Page",
 	})
 }
