@@ -4,7 +4,9 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"os"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -96,4 +98,16 @@ func (db *Database) GetAllCards() ([]Card, error) {
 	}
 
 	return cards, nil
+}
+
+func AccessDB() *Database {
+	godotenv.Load(".env")
+	connStr := os.Getenv("NEON_LINK")
+
+	myDB, err := NewDatabase(connStr)
+	if err != nil {
+		panic(err)
+	}
+	myDB.GetVersion()
+	return myDB
 }

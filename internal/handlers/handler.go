@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"gokanban/internal/db"
 )
 
 func HomeHandler(c *gin.Context) {
@@ -14,22 +16,26 @@ func HomeHandler(c *gin.Context) {
 
 }
 
-func Index(c *gin.Context) {
+func AddCardHandler(c *gin.Context) {
+	// Handle card creation
+	db := db.AccessDB()
+	db.AddCard("test card", []string{"tag1", "tag2"})
+	// db.AddCard(c.PostForm("text"), c.PostFormArray("tags"))
 
-	c.HTML(200, "index.html", gin.H{
-		"title": "Home Page",
-	})
+}
+
+func GetBoard(c *gin.Context) {
+
+}
+
+func IndexHandler(c *gin.Context) {
+	data := map[string]string{"Title": "Kanban Board - Index"}
+	c.HTML(http.StatusOK, "layout.html", data)
 }
 
 func CardsHandler(c *gin.Context) {
-	// Serve the HTMX cards page
-	// return index html
-	// return json
-
-	// c.HTML(200, "index.gohtml", gin.H{
-	// 	"title": "Home Page",
-	// })
-
+	data := map[string]string{"Title": "Kanban Board - Index"}
+	c.HTML(http.StatusOK, "index.html", data)
 }
 
 func LoginHandler(c *gin.Context) {

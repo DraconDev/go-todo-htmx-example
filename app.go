@@ -16,8 +16,6 @@ func main() {
 	setupRoutes(r)
 	r.Static("/styles", "./styles")
 	r.LoadHTMLGlob("templates/**/*")
-	// r.LoadHTMLFiles("templates/index.html")
-	// r.LoadHTMLGlob("templates/partials/*")
 
 	godotenv.Load(".env")
 	connStr := os.Getenv("NEON_LINK")
@@ -40,7 +38,8 @@ func main() {
 
 func setupRoutes(r *gin.Engine) {
 
-	r.GET("/", handler.Index)
+	r.GET("/", handler.IndexHandler)
+	r.GET("/api/card/add", handler.AddCardHandler)
 	r.GET("/hello", handler.HomeHandler)
 	r.GET("/cards", handler.CardsHandler)
 	r.GET("/login", handler.LoginHandler)
