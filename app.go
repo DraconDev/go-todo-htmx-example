@@ -2,12 +2,8 @@
 package main
 
 import (
-	"os"
-
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 
-	"gokanban/internal/db"
 	handler "gokanban/internal/handlers"
 )
 
@@ -17,14 +13,6 @@ func main() {
 	r.Static("/styles", "./styles")
 	r.LoadHTMLGlob("templates/**/*")
 
-	godotenv.Load(".env")
-	connStr := os.Getenv("NEON_LINK")
-
-	myDB, err := db.NewDatabase(connStr)
-	if err != nil {
-		panic(err)
-	}
-	myDB.GetVersion()
 	// myDB.AddCard("test card", []string{"tag1", "tag2"})
 	// cards, err := myDB.GetAllCards()
 	// if err != nil {

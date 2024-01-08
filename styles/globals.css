@@ -15,5 +15,7 @@ h1 {
 }
 
 body {
-    background: #ff0;
+    background: #333;
+    color: #fff;
+    padding: 10px;
 }
