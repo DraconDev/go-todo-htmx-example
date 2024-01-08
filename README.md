@@ -4,4 +4,4 @@
 
 ## try it
 
-`go run cmd/server/main.go` and [visit](http://localhost:8000)
+`go run app.go` and [visit](http://localhost:8080)
