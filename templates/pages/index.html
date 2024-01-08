@@ -1,0 +1,13 @@
+{{define "main"}}
+<h1>Kanban Board</h1>
+hey
+<div class="">{{ template "navbar"}}</div>
+<button
+    hx-post="/clicked"
+    hx-trigger="click"
+    hx-target="#parent-div"
+    hx-swap="outerHTML"
+>
+    Click Me!
+</button>
+{{end}}

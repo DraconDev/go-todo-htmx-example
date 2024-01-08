@@ -15,7 +15,7 @@ func main() {
 	r := gin.Default()
 	setupRoutes(r)
 	r.Static("/styles", "./styles")
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob("templates/**/*")
 	// r.LoadHTMLFiles("templates/index.html")
 	// r.LoadHTMLGlob("templates/partials/*")
 
