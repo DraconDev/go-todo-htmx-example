@@ -1,5 +1,5 @@
 {{define "content"}}
-<div class="flex flex-col gap-3 justify-center items-center">
+<div class="flex flex-col gap-3 justify-center items-center h-full">
     <form
         hx-post="/api/card/add"
         hx-target=".card-container"
@@ -19,14 +19,15 @@
             Add todo
         </button>
     </form>
+
     <button
         hx-get="/api/card/all"
         hx-target=".card-container"
         hx-swap="innerHTML"
-        class="border border-gray-400 rounded-md p-2 text-black"
+        class="border border-gray-400 rounded-md p-2 text-black w-full n"
     >
         Get all cards
     </button>
-    <div class="card-container gap-3"></div>
+    <div class="card-container gap-3 w-full h-full"></div>
 </div>
 {{end}}

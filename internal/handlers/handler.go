@@ -18,7 +18,6 @@ func HomeHandler(c *gin.Context) {
 }
 
 func AddCardHandler(c *gin.Context) {
-	// Handle card creation
 	cardTitle := c.PostForm("cardTitle")
 	db := db.AccessDB()
 	db.AddCard(cardTitle, []string{"tag1", "tag2"})
