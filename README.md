@@ -1,9 +1,4 @@
-# Basic todo list with
-
-HTMX
-Neon db
-
-![image]()
+# Basic todo list with HTMX, Gin, NeonDB
 
 ## try it
 
