@@ -18,13 +18,27 @@ func HomeHandler(c *gin.Context) {
 
 func AddCardHandler(c *gin.Context) {
 	// Handle card creation
+	cardTitle := c.PostForm("cardTitle")
 	db := db.AccessDB()
-	db.AddCard("test card2", []string{"tag1", "tag2"})
+	db.AddCard(cardTitle, []string{"tag1", "tag2"})
 	// db.AddCard(c.PostForm("text"), c.PostFormArray("tags"))
 
 }
 
 func GetBoard(c *gin.Context) {
+	db := db.AccessDB()
+
+	cards, err := db.GetAllCards()
+	if err != nil {
+		panic(err)
+	}
+	print(cards)
+
+	// Set appropriate response headers
+	c.Header("Content-Type", "application/json")
+
+	// Return JSON response using Gin's JSON function
+	c.JSON(http.StatusOK, cards)
 
 }
 
@@ -36,16 +50,4 @@ func IndexHandler(c *gin.Context) {
 func CardsHandler(c *gin.Context) {
 	data := map[string]string{"Title": "Kanban Board - Index"}
 	c.HTML(http.StatusOK, "index.html", data)
-}
-
-func LoginHandler(c *gin.Context) {
-	// Handle user login
-}
-
-func RegisterHandler(c *gin.Context) {
-	// Handle new user registration
-}
-
-func DashboardHandler(c *gin.Context) {
-	// Serve the dashboard only if the user is authenticated
 }
