@@ -35,12 +35,6 @@ func GetBoard(c *gin.Context) {
 	}
 	print(cards)
 
-	// // Set appropriate response headers
-	// c.Header("Content-Type", "application/json")
-
-	// // Return JSON response using Gin's JSON function
-	// c.JSON(http.StatusOK, cards)
-
 	tmpl, err := template.ParseFiles("templates/block/cards.html") // Assuming cards.html contains your template
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
