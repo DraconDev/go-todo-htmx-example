@@ -1,11 +1,13 @@
 {{range .}}
-<div>
+<div
+    class="p-2 bg-gray-400 min-w-full rounded-md m-2 flex flex-center items-center text-center"
+>
     <button
         class="card-button"
         hx-delete="/api/card/delete/{{.ID}}"
         hx-swap="outerHTML"
+        hx-target="closest .card-container"
         id="{{.ID}}"
-        class="p-2 bg-gray-400 min-w-full rounded-md"
     >
         {{.Text}}
     </button>

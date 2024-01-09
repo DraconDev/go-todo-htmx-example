@@ -1,8 +1,9 @@
 {{define "content"}}
 <div class="flex flex-col gap-3 justify-center items-center">
-    <button hx-get="/api/card/add">Add card</button>
     <form
         hx-post="/api/card/add"
+        hx-target=".card-container"
+        hx-swap="innerHTML"
         class="flex flex-col gap-2 h-full bg-gray-400 p-4 rounded-md"
     >
         <input
@@ -11,7 +12,12 @@
             id="cardTitleInput"
             class="border border-gray-400 rounded-md p-2 text-black"
         />
-        <button type="submit">Add card2</button>
+        <button
+            type="submit"
+            class="border border-gray-600 rounded-md p-2 text-black"
+        >
+            Add todo
+        </button>
     </form>
     <button
         hx-get="/api/card/all"
@@ -21,6 +27,6 @@
     >
         Get all cards
     </button>
-    <div class="card-container"></div>
+    <div class="card-container gap-3"></div>
 </div>
 {{end}}
