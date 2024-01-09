@@ -60,12 +60,9 @@ func IndexHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "layout.html", data)
 }
 
-func CardsHandler(c *gin.Context) {
-	data := map[string]string{"Title": "Kanban Board - Index"}
-	c.HTML(http.StatusOK, "index.html", data)
-}
-
 func DeleteCardHandler(c *gin.Context) {
 	// Handle card deletion
-	
+	db := db.AccessDB()
+	db.DeleteCard(c.Param("id"))
+
 }

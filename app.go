@@ -22,6 +22,6 @@ func setupRoutes(r *gin.Engine) {
 	r.GET("/", handler.IndexHandler)
 	r.POST("/api/card/add", handler.AddCardHandler)
 	r.GET("/api/card/all", handler.GetBoard)
-	r.GET("/hello", handler.HomeHandler)
+	r.DELETE("/api/card/delete/:id", handler.DeleteCardHandler)
 
 }

@@ -1,8 +1,11 @@
 {{range .}}
-<button
-    id="{{.ID}}"
-    class="card-button p-2 bg-gray-400 min-w-full rounded-md"
->
-    {{.Text}}
-</button>
+<div class="p-2 bg-gray-400 min-w-full rounded-md">
+    <button
+        id="{{.ID}}"
+        class="card-button"
+        hx-delete="/api/card/delete/{{.ID}}"
+    >
+        {{.Text}}
+    </button>
+</div>
 {{end}}

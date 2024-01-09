@@ -71,6 +71,18 @@ func (db *Database) AddCard(text string, tags []string) error {
 	return nil
 }
 
+// delete card
+func (db *Database) DeleteCard(cardID string) error {
+	// Prepare the SQL query to delete the card
+	query := "DELETE FROM kanban WHERE id = $1"
+	_, err := db.Exec(query, cardID)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // get all cards
 func (db *Database) GetAllCards() ([]Card, error) {
 	// Prepare the SQL query to get all cards
