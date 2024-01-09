@@ -1,3 +1,8 @@
+:root {
+    --primary: #1e90ff;
+    --secondary: #ffffff;
+}
+
 .card {
     margin: 10px;
     padding: 10px;
@@ -15,7 +20,7 @@ h1 {
 }
 
 body {
-    background: #333;
-    color: #fff;
+    background: #ddd;
+    color: #222;
     padding: 10px;
 }
