@@ -1,4 +1,7 @@
-# Kanban with HTMX & GO
+# Basic todo list with
+
+HTMX
+Neon db
 
 ![image]()
 
